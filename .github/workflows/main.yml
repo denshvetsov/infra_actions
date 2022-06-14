@@ -69,10 +69,10 @@ jobs:
         passphrase: ${{ secrets.PASSPHRASE }} # Если ваш ssh-ключ защищён фразой-паролем
         script: |
           # Выполняет pull образа с DockerHub
-          sudo docker pull denshvetsov/infra_actions < ${{ secrets.SUDO_PASSWORD }}
+          sudo -S docker pull denshvetsov/infra_actions < ${{ secrets.SUDO_PASSWORD }}
           #остановка всех контейнеров
-          sudo docker stop $(sudo docker ps -a -q) < ${{ secrets.SUDO_PASSWORD }}
-          sudo docker run --rm -d -p 5000:5000 denshvetsov/infra_actions < ${{ secrets.SUDO_PASSWORD }}
+          sudo -S docker stop $(sudo docker ps -a -q) < ${{ secrets.SUDO_PASSWORD }}
+          sudo -S docker run --rm -d -p 5000:5000 denshvetsov/infra_actions < ${{ secrets.SUDO_PASSWORD }}
 
 
 
