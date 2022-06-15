@@ -71,7 +71,7 @@ jobs:
           # Выполняет pull образа с DockerHub
           echo ${{ secrets.SUDO_PASSWORD }} | sudo -S docker pull denshvetsov/infra_actions
           # остановка всех контейнеров
-          echo ${{ secrets.SUDO_PASSWORD }} | sudo -S docker stop $(sudo docker ps -a -q)
+          echo ${{ secrets.SUDO_PASSWORD }} | sudo -S docker stop $(echo ${{ secrets.SUDO_PASSWORD }} | sudo -S docker ps -a -q)
           # запуск сервера
           echo ${{ secrets.SUDO_PASSWORD }} | sudo -S docker run --rm -d -p 5000:5000 denshvetsov/infra_actions
 
